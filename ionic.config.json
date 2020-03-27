@@ -1,0 +1,7 @@
+{
+  "name": "project_beer",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
