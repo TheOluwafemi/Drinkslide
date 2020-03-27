@@ -1,0 +1,17 @@
+ion-grid.post {
+  .post__top {
+    padding: 0.5rem 0;
+
+    ion-icon {
+      font-size: 26px;
+    }
+  }
+
+  ion-item {
+    --border-color: rgb(240, 240, 240);
+
+    .description {
+      color: #383a3e;
+    }
+  }
+}
