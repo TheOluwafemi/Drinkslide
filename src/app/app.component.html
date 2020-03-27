@@ -1,3 +1,72 @@
 <ion-app>
+  <ion-menu side="start" content-id="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-item lines="none">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-avatar>
+                  <img
+                    src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+                  />
+                </ion-avatar>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-label class="ion-text-wrap">
+                  <ion-text color="primary">
+                    <h5>@user001</h5>
+                  </ion-text>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-label>
+                  <ion-text color="secondary">
+                    <p>Enthusiat</p>
+                  </ion-text>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content id="content">
+      <ion-list>
+        <ion-item lines="none">
+          <ion-icon name="mail-outline" color="medium" slot="start"></ion-icon>
+          <ion-label>Inbox</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon
+            name="paper-plane-outline"
+            color="medium"
+            slot="start"
+          ></ion-icon>
+          <ion-label>Outbox</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="heart-outline" color="medium" slot="start"></ion-icon>
+          <ion-label>Favorites</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon
+            name="log-out-outline"
+            color="medium"
+            slot="start"
+          ></ion-icon>
+          <ion-label>Log Out</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
   <ion-router-outlet></ion-router-outlet>
 </ion-app>
