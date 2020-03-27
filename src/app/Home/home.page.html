@@ -1,0 +1,7 @@
+<app-header-scroll></app-header-scroll>
+
+<ion-content [fullscreen]="true">
+  <app-header-collapse></app-header-collapse>
+
+  <app-post *ngFor="let post of posts" [post]="post"></app-post>
+</ion-content>
