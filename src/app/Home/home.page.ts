@@ -10,9 +10,13 @@ import { Post } from "../models/post.model";
 export class HomePage {
   posts: Post[];
 
-  constructor(private homeService: HomeService) {}
+  constructor(private homeService: HomeService) {
+    this.homeService.getAllPosts();
+  }
 
   ionViewWillEnter() {
-    this.posts = this.homeService.getAllPosts();
+    this.homeService.allPosts$.subscribe(res => {
+      this.posts = res;
+    });
   }
 }

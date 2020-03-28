@@ -1,10 +1,14 @@
 import { Injectable } from "@angular/core";
 import { Post } from "../models/post.model";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
   providedIn: "root"
 })
 export class HomeService {
+  private allPosts = new BehaviorSubject<Post[]>(null);
+  allPosts$ = this.allPosts.asObservable();
+
   constructor() {}
 
   posts: Post[] = [
@@ -43,7 +47,7 @@ export class HomeService {
   ];
 
   getAllPosts() {
-    return [...this.posts];
+    this.allPosts.next(this.posts);
   }
 
   getPostById(postId: string) {
@@ -52,6 +56,10 @@ export class HomeService {
         return recipe.id === postId;
       })
     };
+  }
+
+  addNewPost(newPost: Post) {
+    this.posts.push(newPost);
   }
 
   deleteRecipe(postId: string) {
