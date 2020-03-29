@@ -1,0 +1,8 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "project_beer",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}
