@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'create-post',
     loadChildren: () => import('./create-post/create-post.module').then( m => m.CreatePostPageModule)
+  },
+  {
+    path: 'post-detail',
+    loadChildren: () => import('./Home/post-detail/post-detail.module').then( m => m.PostDetailPageModule)
   }
 ];
 @NgModule({
