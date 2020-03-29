@@ -17,7 +17,8 @@ export class HomeService {
       title: "Heineken",
       imageUrl:
         "https://images.pexels.com/photos/70598/pexels-photo-70598.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-      description: "The best beer in the world",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis accusamus ea ullam, ducimus inventore iure maxime cumque error repellendus odio expedita deserunt fuga optio sapiente, soluta, est tempora quasi praesentium Deserunt repellat voluptas totam atque fugiat. Tenetur repellat corporis possimus quo perspiciatis, iste sunt non et repellendus qui, animi maxime facilis quae cum numquam delectus aut autem incidunt a",
       tags: ["cruise", "smooth"]
     },
     {
@@ -52,8 +53,8 @@ export class HomeService {
 
   getPostById(postId: string) {
     return {
-      ...this.posts.find(recipe => {
-        return recipe.id === postId;
+      ...this.posts.find(post => {
+        return post.id === postId;
       })
     };
   }

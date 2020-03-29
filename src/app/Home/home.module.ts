@@ -14,7 +14,19 @@ import { ComponentsModule } from "../components/components.module";
     FormsModule,
     ComponentsModule,
     ExploreContainerComponentModule,
-    RouterModule.forChild([{ path: "", component: HomePage }])
+    RouterModule.forChild([
+      {
+        path: "",
+        component: HomePage
+      },
+      {
+        path: ":postId",
+        loadChildren: () =>
+          import("./post-detail/post-detail.module").then(
+            m => m.PostDetailPageModule
+          )
+      }
+    ])
   ],
   declarations: [HomePage],
   exports: [HomePage]

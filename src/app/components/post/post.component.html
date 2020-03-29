@@ -3,9 +3,7 @@
     <ion-col>
       <ion-item lines="none" class="post__top">
         <ion-avatar slot="start">
-          <img
-            src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-          />
+          <img src="https://picsum.photos/seed/picsum/200/300" />
         </ion-avatar>
         <ion-icon
           name="share-social-outline"
@@ -25,14 +23,12 @@
   <ion-row>
     <ion-col>
       <ion-item lines="full">
-        <ion-label class="ion-text-wrap">
+        <ion-label>
           <ion-text color="primary">
             <h2>{{ post.title }}</h2>
           </ion-text>
-          <ion-text color="dark-tint">
-            <p class="description">
-              {{ post.description }}
-            </p>
+          <ion-text class="description">
+            <small>{{ post.description }}</small>
           </ion-text>
         </ion-label>
       </ion-item>
