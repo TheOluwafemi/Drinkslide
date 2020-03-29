@@ -12,6 +12,10 @@ ion-grid.post {
 
     .description {
       color: #383a3e;
+      display: block !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap !important;
     }
   }
 }
