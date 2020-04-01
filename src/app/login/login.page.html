@@ -1,0 +1,69 @@
+<ion-header class="ion-no-border">
+  <div class="login-header ion-padding">
+    <img class="logo" src="../../assets//icon/logo.svg" alt="logo" />
+  </div>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="login ion-margin-top">
+    <ion-grid>
+      <ion-row class="row">
+        <div class="big-text">login</div>
+        <div class="small-text-bold" routerLink="/register">register?</div>
+      </ion-row>
+
+      <ion-row class="row">
+        <div class="small-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem nam
+          suscipit nisi minima atque quidem quos dolore nobis.
+        </div>
+      </ion-row>
+
+      <ion-row class="row">
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input
+              type="email"
+              name="email"
+              inputmode="email"
+              size="email"
+              required="true"
+              clearInput="true"
+              pattern="email"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input
+              type="password"
+              name="password"
+              inputmode="password"
+              size="password"
+              required="true"
+              clearInput="true"
+              pattern="password"
+            ></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-row>
+
+      <ion-row class="ion-margin-top ion-margin-bottom">
+        <div class=" btn-wrapper ion-padding">
+          <ion-button
+            expand="full"
+            type="submit"
+            class="ion-no-margin"
+            routerLink="/tabs/home"
+            >LOGIN</ion-button
+          >
+          <small
+            >Don't have an account?
+            <a routerLink="/register">Register</a></small
+          >
+        </div>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
