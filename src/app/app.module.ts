@@ -7,6 +7,9 @@ import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
 import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
 
+import { CloudinaryModule } from "@cloudinary/angular-5.x";
+import * as Cloudinary from "cloudinary-core";
+
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 
@@ -17,7 +20,10 @@ import { AppComponent } from "./app.component";
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CloudinaryModule.forRoot(Cloudinary, {
+      cloud_name: "dhnvd24pz"
+    })
   ],
   providers: [
     StatusBar,
