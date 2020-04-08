@@ -1,7 +1,7 @@
 export interface Post {
   id: string;
-  title: string;
-  imageUrl: string;
-  description: string;
-  tags?: string[];
+  user_profile: string;
+  image_url: string;
+  status_text: string;
+  created_on: string;
 }
