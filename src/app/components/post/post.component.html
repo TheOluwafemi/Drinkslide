@@ -16,7 +16,7 @@
 
   <ion-row>
     <ion-col>
-      <ion-img [src]="post.imageUrl"></ion-img>
+      <ion-img [src]="post['image_url']"></ion-img>
     </ion-col>
   </ion-row>
 
@@ -28,7 +28,7 @@
             <h2>{{ post.title }}</h2>
           </ion-text>
           <ion-text class="description">
-            <small>{{ post.description }}</small>
+            <small>{{ post["status_text"] }}</small>
           </ion-text>
         </ion-label>
       </ion-item>

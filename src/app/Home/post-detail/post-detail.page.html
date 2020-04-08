@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ loadedPost.title }}</ion-title>
+    <ion-title>Post</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,13 +11,16 @@
   <ion-grid class="ion-no-padding">
     <ion-row>
       <ion-col class="ion-no-padding">
-        <ion-img [src]="loadedPost.imageUrl"></ion-img>
+        <ion-img [src]="image"></ion-img>
       </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-col>
-        <h1 class="ion-text-center">{{ loadedPost.title }}</h1>
-      </ion-col>
+      <ion-text>
+        <p>
+          {{description}}
+        </p>
+      </ion-text>
     </ion-row>
   </ion-grid>
 </ion-content>

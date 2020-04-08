@@ -6,10 +6,12 @@ import { Post } from "src/app/models/post.model";
 @Component({
   selector: "app-post-detail",
   templateUrl: "./post-detail.page.html",
-  styleUrls: ["./post-detail.page.scss"]
+  styleUrls: ["./post-detail.page.scss"],
 })
 export class PostDetailPage implements OnInit {
-  loadedPost: Post;
+  loadedPost: any;
+  description: any;
+  image: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -18,16 +20,23 @@ export class PostDetailPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe(param => {
-      console.log(param);
+    this.getSinglePostDetails();
+  }
+
+  async getSinglePostDetails() {
+    this.activatedRoute.paramMap.subscribe(async (param) => {
       if (!param.has("postId")) {
         this.router.navigate(["/home"]);
         return;
       }
 
       const postId = param.get("postId");
-      this.loadedPost = this.homeService.getPostById(postId);
-      console.log(this.loadedPost);
+      this.loadedPost = await this.homeService.getPostById(postId);
+      this.description = this.loadedPost[0]["status_text"];
+      this.image = this.loadedPost[0]["image_url"];
     });
+  }
+  de(de: any) {
+    throw new Error("Method not implemented.");
   }
 }
