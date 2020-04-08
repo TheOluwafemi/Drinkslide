@@ -4,7 +4,7 @@ import { TabsPage } from "./tabs.page";
 
 const routes: Routes = [
   {
-    path: "tabs",
+    path: "",
     component: TabsPage,
     children: [
       {
@@ -13,9 +13,9 @@ const routes: Routes = [
           {
             path: "",
             loadChildren: () =>
-              import("../Home/home.module").then(m => m.HomeModule)
-          }
-        ]
+              import("../Home/home.module").then((m) => m.HomeModule),
+          },
+        ],
       },
       {
         path: "tab3",
@@ -23,26 +23,26 @@ const routes: Routes = [
           {
             path: "",
             loadChildren: () =>
-              import("../tab3/tab3.module").then(m => m.Tab3PageModule)
-          }
-        ]
+              import("../tab3/tab3.module").then((m) => m.Tab3PageModule),
+          },
+        ],
       },
       {
         path: "",
         redirectTo: "/tabs/home",
-        pathMatch: "full"
-      }
-    ]
+        pathMatch: "full",
+      },
+    ],
   },
   {
     path: "",
     redirectTo: "/tabs/home",
-    pathMatch: "full"
-  }
+    pathMatch: "full",
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class TabsPageRoutingModule {}

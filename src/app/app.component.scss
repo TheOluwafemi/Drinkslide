@@ -8,6 +8,7 @@ ion-menu {
   #content {
     ion-item {
       padding: 0.5rem 0;
+      pointer-events: initial !important;
 
       ion-icon {
         font-size: 26px;

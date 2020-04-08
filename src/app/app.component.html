@@ -37,32 +37,29 @@
     </ion-header>
 
     <ion-content id="content">
-      <ion-list>
-        <ion-item lines="none">
-          <ion-icon name="mail-outline" color="medium" slot="start"></ion-icon>
-          <ion-label>Inbox</ion-label>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-icon
-            name="paper-plane-outline"
-            color="medium"
-            slot="start"
-          ></ion-icon>
-          <ion-label>Outbox</ion-label>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-icon name="heart-outline" color="medium" slot="start"></ion-icon>
-          <ion-label>Favorites</ion-label>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-icon
-            name="log-out-outline"
-            color="medium"
-            slot="start"
-          ></ion-icon>
-          <ion-label>Log Out</ion-label>
-        </ion-item>
-      </ion-list>
+      <ion-item lines="none">
+        <ion-icon name="mail-outline" color="medium" slot="start"></ion-icon>
+        <ion-label>Inbox</ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-icon
+          name="paper-plane-outline"
+          color="medium"
+          slot="start"
+        ></ion-icon>
+        <ion-label>Outbox</ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-icon name="heart-outline" color="medium" slot="start"></ion-icon>
+        <ion-label>Favorites</ion-label>
+      </ion-item>
+
+      <ion-item lines="none" (click)="onLogout()">
+        <ion-icon name="log-out-outline" color="medium" slot="start"></ion-icon>
+        <ion-label>Log Out</ion-label>
+      </ion-item>
     </ion-content>
   </ion-menu>
 

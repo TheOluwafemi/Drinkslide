@@ -4,14 +4,13 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouteReuseStrategy } from "@angular/router";
 
 import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
+import { IonicStorageModule } from "@ionic/storage";
 import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
 
-import { CloudinaryModule } from "@cloudinary/angular-5.x";
-import * as Cloudinary from "cloudinary-core";
-
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,17 +18,16 @@ import { AppComponent } from "./app.component";
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    CloudinaryModule.forRoot(Cloudinary, {
-      cloud_name: "dhnvd24pz"
-    })
+    IonicStorageModule.forRoot(),
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
