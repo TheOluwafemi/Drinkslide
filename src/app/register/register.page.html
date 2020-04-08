@@ -14,8 +14,7 @@
 
       <ion-row class="row">
         <div class="small-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem nam
-          suscipit nisi minima atque quidem quos dolore nobis.
+          Create a new account
         </div>
       </ion-row>
 
@@ -24,51 +23,47 @@
           <ion-item>
             <ion-label position="floating">Email</ion-label>
             <ion-input
+              [(ngModel)]="email"
               type="email"
               name="email"
               inputmode="email"
-              size="email"
               required="true"
               clearInput="true"
-              pattern="email"
             ></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label position="floating">Password</ion-label>
+            <ion-label position="floating">Username</ion-label>
             <ion-input
-              type="password"
-              name="password"
-              inputmode="password"
-              size="password"
+              [(ngModel)]="username"
+              type="text"
+              name="username"
+              inputmode="text"
               required="true"
-              clearInput="true"
-              pattern="password"
             ></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label position="floating">Confirm Password</ion-label>
             <ion-input
+              [(ngModel)]="password"
               type="password"
               name="password"
               inputmode="password"
-              size="password"
               required="true"
               clearInput="true"
-              pattern="password"
             ></ion-input>
           </ion-item>
         </ion-list>
       </ion-row>
 
       <ion-row class="ion-margin-top ion-margin-bottom">
-        <div class=" btn-wrapper ion-padding">
+        <div class="btn-wrapper ion-padding">
           <ion-button
+            (click)="onRegister()"
             expand="full"
             type="submit"
             class="ion-no-margin"
-            routerLink="/tabs/home"
             >Create account</ion-button
           >
           <small
