@@ -11,7 +11,9 @@ export class CreateProfileService implements OnDestroy {
   alive: boolean;
   registerState = new BehaviorSubject(null);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.alive = true;
+  }
 
   _register(
     email: string,

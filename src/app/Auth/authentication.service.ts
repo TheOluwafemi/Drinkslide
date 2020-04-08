@@ -16,6 +16,7 @@ import { Router } from "@angular/router";
 })
 export class AuthenticationService implements OnDestroy {
   token: string;
+  profileId: string;
   alive: boolean;
   loginState = new BehaviorSubject(null);
   authenticationState = new BehaviorSubject(false);
@@ -42,8 +43,20 @@ export class AuthenticationService implements OnDestroy {
     });
   }
 
+  checkUserId() {
+    this.storage.get("profileId").then((res) => {
+      if (res) {
+        this.profileId = res;
+      }
+    });
+  }
+
   setToken(token: string) {
     this.storage.set("token", `Token ${token}`);
+  }
+
+  setUserId(id: string) {
+    this.storage.set("profileId", id);
   }
 
   _login(username: string, password: string): Observable<any> {
@@ -57,8 +70,9 @@ export class AuthenticationService implements OnDestroy {
       .pipe(takeWhile(() => this.alive))
       .subscribe((res) => {
         if (res) {
-          if (res.status == "200") {
+          if (res.token) {
             this.setToken(res.token);
+            this.setUserId(res.id);
             this.loginState.next(res);
             this.authenticationState.next(true);
           } else {

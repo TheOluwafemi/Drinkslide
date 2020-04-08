@@ -3,7 +3,7 @@ import {
   OnInit,
   ViewChild,
   ElementRef,
-  AfterViewInit
+  AfterViewInit,
 } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { Plugins, CameraResultType } from "@capacitor/core";
@@ -15,7 +15,7 @@ const { Camera } = Plugins;
 @Component({
   selector: "CreatePostPage",
   templateUrl: "./create-post.page.html",
-  styleUrls: ["./create-post.page.scss"]
+  styleUrls: ["./create-post.page.scss"],
 })
 export class CreatePostPage implements OnInit, AfterViewInit {
   imageAdded: boolean = false;
@@ -40,7 +40,7 @@ export class CreatePostPage implements OnInit, AfterViewInit {
     const image = await Camera.getPhoto({
       quality: 90,
       allowEditing: true,
-      resultType: CameraResultType.Uri
+      resultType: CameraResultType.Uri,
     });
     // image.webPath will contain a path that can be set as an image src.
     // You can access the original file using image.path, which can be
@@ -62,28 +62,28 @@ export class CreatePostPage implements OnInit, AfterViewInit {
     return;
   }
 
-  createNewPost() {
-    this.postValid();
-    console.log("postisvalid", this.postIsValid);
-    if (this.postIsValid) {
-      this.newPost = {
-        id: "r5",
-        title: this.title,
-        description: this.description,
-        imageUrl: this.imageUrl
-      };
-      console.log("newPost", this.newPost);
-      this.homeService.addNewPost(this.newPost);
-      this.dismissModal();
-      return;
-    } else {
-      alert("fuck off");
-    }
-  }
+  // createNewPost() {
+  //   this.postValid();
+  //   console.log("postisvalid", this.postIsValid);
+  //   if (this.postIsValid) {
+  //     this.newPost = {
+  //       id: "r5",
+  //       title: this.title,
+  //       description: this.description,
+  //       imageUrl: this.imageUrl
+  //     };
+  //     console.log("newPost", this.newPost);
+  //     this.homeService.addNewPost(this.newPost);
+  //     this.dismissModal();
+  //     return;
+  //   } else {
+  //     alert("fuck off");
+  //   }
+  // }
 
   dismissModal() {
     this.modalController.dismiss({
-      dismissed: true
+      dismissed: true,
     });
   }
 }
