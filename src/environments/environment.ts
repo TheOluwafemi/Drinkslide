@@ -5,8 +5,9 @@ const baseUrl = "https://theoluwafemi.pythonanywhere.com/api";
 
 export const environment = {
   production: false,
-  loginUser: `${baseUrl}/login/`,
+  loginUser: `${baseUrl}/authenticate/`,
   registerUser: `${baseUrl}/profile/`,
+  getFeed: `${baseUrl}/feed/`,
 };
 
 /*
