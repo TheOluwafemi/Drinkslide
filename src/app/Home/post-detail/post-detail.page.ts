@@ -36,7 +36,4 @@ export class PostDetailPage implements OnInit {
       this.image = this.loadedPost[0]["image_url"];
     });
   }
-  de(de: any) {
-    throw new Error("Method not implemented.");
-  }
 }

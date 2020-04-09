@@ -43,6 +43,10 @@ export class AuthenticationService implements OnDestroy {
     });
   }
 
+  getToken(): string {
+    return this.token;
+  }
+
   checkUserId() {
     this.storage.get("profileId").then((res) => {
       if (res) {
@@ -102,10 +106,9 @@ export class AuthenticationService implements OnDestroy {
   }
 
   logout() {
-    this.storage.remove("token").then(() => {
-      this.authenticationState.next(false);
-      this.router.navigateByUrl["/login"];
-    });
+    this.storage.remove("token");
+    this.authenticationState.next(false);
+    this.isAuthenticated();
   }
 
   handleError(error: HttpErrorResponse) {

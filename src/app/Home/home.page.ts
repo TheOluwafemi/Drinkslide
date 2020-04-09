@@ -3,6 +3,7 @@ import { HomeService } from "./home.service";
 import { Post } from "../models/post.model";
 import { Storage } from "@ionic/storage";
 import { Profile } from "../models/profile.model";
+import { MenuController } from "@ionic/angular";
 
 @Component({
   selector: "app-home",
@@ -14,19 +15,22 @@ export class HomePage implements OnInit {
   profileId: string = "";
   profileDetails: Profile;
 
-  constructor(private homeService: HomeService, private storage: Storage) {
+  constructor(
+    private homeService: HomeService,
+    private storage: Storage,
+    private menuController: MenuController
+  ) {
     this.homeService.getAllPosts();
     this.initGetUserDetails();
     this.subscribeTogetUserDetails();
   }
 
-  ionViewWillEnter() {
+  ngOnInit() {
     this.homeService.allPosts.subscribe((res) => {
       this.posts = res;
     });
+    this.menuController.enable(true);
   }
-
-  ngOnInit() {}
 
   initGetUserDetails() {
     this.storage.get("profileId").then((res) => {

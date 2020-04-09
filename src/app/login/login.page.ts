@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { AuthenticationService } from "../Auth/authentication.service";
 import { Router } from "@angular/router";
 import { Storage } from "@ionic/storage";
-import { AlertController } from "@ionic/angular";
+import { AlertController, MenuController } from "@ionic/angular";
 
 @Component({
   selector: "app-login",
@@ -16,11 +16,16 @@ export class LoginPage implements OnInit {
   constructor(
     private authService: AuthenticationService,
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private menuController: MenuController
   ) {}
 
   ngOnInit() {
     this.authService.checkToken();
+  }
+
+  ionViewWillEnter() {
+    this.menuController.enable(false);
   }
 
   onLogin() {

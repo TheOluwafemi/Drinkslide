@@ -1,7 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { CreateProfileService } from "../Auth/create-profile.service";
 import { Router } from "@angular/router";
-import { AlertController, ToastController } from "@ionic/angular";
+import {
+  AlertController,
+  ToastController,
+  MenuController,
+} from "@ionic/angular";
 import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 
 @Component({
@@ -18,10 +22,15 @@ export class RegisterPage implements OnInit {
     private createProfileService: CreateProfileService,
     private router: Router,
     private alertController: AlertController,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private menuController: MenuController
   ) {}
 
   ngOnInit() {}
+
+  ionViewWillEnter() {
+    this.menuController.enable(false);
+  }
 
   async onRegister() {
     this.createProfileService.register(
