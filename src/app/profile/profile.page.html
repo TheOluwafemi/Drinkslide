@@ -1,0 +1,25 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar> </ion-toolbar>
+  </ion-header>
+
+  <div class="profile">
+    <div class="profile-image">
+      <ion-img class="photo" [src]="profilePicture"></ion-img>
+    </div>
+
+    <div class="profile-details ion-text-center">
+      <ion-text color="tertiary" (click)="takePicture()">
+        <ion-label>Change profile picture</ion-label>
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-text>
+
+      <ion-text color="light">
+        <p>{{ email }}</p>
+      </ion-text>
+      <ion-text color="light">
+        <p>@{{ username }}</p>
+      </ion-text>
+    </div>
+  </div>
+</ion-content>

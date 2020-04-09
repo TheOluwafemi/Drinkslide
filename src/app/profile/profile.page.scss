@@ -1,0 +1,25 @@
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+ion-content {
+  --background: none;
+  background-image: url("../../assets/profile-bg.jpg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .profile-image {
+    margin: 4rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .photo {
+      height: 14rem;
+      width: 14rem;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+}
