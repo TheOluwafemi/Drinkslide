@@ -7,7 +7,7 @@
             <ion-row>
               <ion-col>
                 <ion-avatar>
-                  <img src="https://i.picsum.photos/id/1005/5760/3840.jpg" />
+                  <img [src]="profilePicture" />
                 </ion-avatar>
               </ion-col>
             </ion-row>
@@ -16,7 +16,7 @@
               <ion-col>
                 <ion-label class="ion-text-wrap">
                   <ion-text color="primary">
-                    <h5>@user001</h5>
+                    <h5>@{{ username }}</h5>
                   </ion-text>
                 </ion-label>
               </ion-col>
@@ -26,7 +26,7 @@
               <ion-col>
                 <ion-label>
                   <ion-text color="secondary">
-                    <p>Enthusiat</p>
+                    <p>Member</p>
                   </ion-text>
                 </ion-label>
               </ion-col>
@@ -38,29 +38,28 @@
 
     <ion-content id="content">
       <ion-item lines="none">
-        <ion-icon name="mail-outline" color="medium" slot="start"></ion-icon>
-        <ion-label>Inbox</ion-label>
+        <ion-icon name="home-outline" color="medium" slot="start"></ion-icon>
+        <ion-label>Home</ion-label>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-icon
-          name="paper-plane-outline"
-          color="medium"
-          slot="start"
-        ></ion-icon>
-        <ion-label>Outbox</ion-label>
-      </ion-item>
-
-      <ion-item lines="none">
-        <ion-icon name="heart-outline" color="medium" slot="start"></ion-icon>
-        <ion-label>Favorites</ion-label>
-      </ion-item>
-
-      <ion-item lines="none" (click)="onLogout()">
-        <ion-icon name="log-out-outline" color="medium" slot="start"></ion-icon>
-        <ion-label>Log Out</ion-label>
+        <ion-icon name="person-outline" color="medium" slot="start"></ion-icon>
+        <ion-label>Profile</ion-label>
       </ion-item>
     </ion-content>
+
+    <ion-footer class="ion-no-border">
+      <ion-toolbar color="primary">
+        <ion-item
+          color="primary"
+          class="ion-no-padding"
+          lines="none"
+          (click)="onLogout()"
+        >
+          <ion-label class="ion-text-center">Log Out</ion-label>
+        </ion-item>
+      </ion-toolbar>
+    </ion-footer>
   </ion-menu>
 
   <ion-router-outlet></ion-router-outlet>
