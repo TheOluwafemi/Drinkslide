@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, defineInjectable } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouteReuseStrategy } from "@angular/router";
@@ -11,6 +11,9 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { FormsModule } from "@angular/forms";
+
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { RequestInterceptor } from "./utils/request.interceptor";
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +30,7 @@ import { FormsModule } from "@angular/forms";
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
