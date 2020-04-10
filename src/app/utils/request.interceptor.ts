@@ -27,7 +27,7 @@ export class RequestInterceptor implements HttpInterceptor {
     this.presentLoading();
     request = request.clone({
       setHeaders: {
-        Authorization: `Token ${this.authService.getToken()}`,
+        Authorization: `${this.authService.getToken()}`,
       },
     });
     return next.handle(request).pipe(
