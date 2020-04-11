@@ -26,10 +26,43 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.homeService.allPosts.subscribe((res) => {
-      this.posts = res;
-    });
     this.menuController.enable(true);
+    this.homeService.getAllPosts();
+    this.getUpdatedFeed();
+  }
+
+  // ionViewWillEnter() {
+  //   this.homeService.getAllPosts();
+  //   this.getUpdatedFeed();
+  // }
+
+  getUpdatedFeed() {
+    this.homeService.getAllPosts();
+    this.homeService.allPosts.subscribe((res) => {
+      const sortedResponse = res.sort(this.sortPosts);
+      this.posts = sortedResponse;
+    });
+  }
+
+  sortPosts(post1, post2) {
+    // Use toUpperCase() to ignore character casing
+    const postId1 = post1.id;
+    const postId2 = post2.id;
+
+    let comparison = 0;
+    if (postId1 < postId2) {
+      comparison = 1;
+    } else if (postId1 > postId2) {
+      comparison = -1;
+    }
+    return comparison;
+  }
+
+  refreshFeed(event) {
+    setTimeout(() => {
+      this.getUpdatedFeed();
+      event.target.complete();
+    }, 2000);
   }
 
   initGetUserDetails() {

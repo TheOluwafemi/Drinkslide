@@ -52,7 +52,6 @@ export class HomeService implements OnDestroy {
   }
 
   getPostById(postId: string) {
-    console.log(postId, "postID::::");
     return {
       ...this.posts.filter((post) => {
         return post.id == postId;

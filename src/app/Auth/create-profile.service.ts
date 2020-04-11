@@ -36,7 +36,6 @@ export class CreateProfileService implements OnDestroy {
         if (res) {
           this.registerState.next(res);
         } else {
-          console.log("Unable to register user");
         }
       });
   }

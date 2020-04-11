@@ -20,7 +20,7 @@
       <ion-col>
         <ion-item lines="none">
           <ion-avatar slot="start">
-            <ion-img src=""></ion-img>
+            <ion-img [src]="profilePicture"></ion-img>
           </ion-avatar>
           <ion-text>
             <small>Sharing with everyone</small>
@@ -29,15 +29,21 @@
       </ion-col>
     </ion-row>
 
+    <ion-item class="photo ion-padding" [hidden]="imageAdded">
+      <ion-text>
+        <small>*Add an image</small>
+      </ion-text>
+      <ion-icon name="camera-outline" (click)="takePicture()"></ion-icon>
+    </ion-item>
+
     <ion-row class="ion-padding">
-      <ion-input
-        type="text"
-        placeholder="What are you drinking?..."
-        required
-        autofocus="true"
-        inputmode="text"
-        [(ngModel)]="title"
-      ></ion-input>
+      <img
+        [hidden]="!imageAdded"
+        class="image"
+        #image
+        src=""
+        alt="uploaded image"
+      />
     </ion-row>
 
     <ion-row class="ion-padding">
@@ -48,18 +54,6 @@
         rows="5"
         [(ngModel)]="description"
       ></ion-textarea>
-    </ion-row>
-
-    <ion-item class="photo ion-padding" [hidden]="imageAdded">
-      <ion-text>
-        <small>*Add an image</small>
-      </ion-text>
-      <ion-icon name="camera-outline" (click)="takePicture()"></ion-icon>
-      <ion-icon name="image-outline"></ion-icon>
-    </ion-item>
-
-    <ion-row class="ion-padding">
-      <img [hidden]="!imageAdded" #image src="" alt="uploaded image" />
     </ion-row>
   </ion-grid>
 </ion-content>
