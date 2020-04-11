@@ -30,12 +30,12 @@ export class ProfilePage implements OnInit {
     private sanitizer: DomSanitizer,
     private http: HttpClient,
     private toastController: ToastController
-  ) {}
-
-  ngOnInit() {
+  ) {
     this.initGetUserDetails();
     this.getProfile();
   }
+
+  ngOnInit() {}
 
   initGetUserDetails() {
     this.storage.get("profileId").then((res) => {
@@ -49,7 +49,6 @@ export class ProfilePage implements OnInit {
   getProfile() {
     this.homeService.profileDetails.subscribe((res) => {
       if (res) {
-        console.log(res, "res");
         this.profilePicture = res["profile_picture"];
         this.username = res["name"];
         this.email = res["email"];
@@ -68,10 +67,6 @@ export class ProfilePage implements OnInit {
     if (this.imageUrl !== "") {
       this.imageAdded = true;
     }
-    console.log("current profile photo", this.profilePicture);
-    console.log("IMAGEURL", this.imageUrl);
-
-    const contentType = "image/jpg";
 
     let blob = this.b64toBlob(this.imageUrl);
 
@@ -81,7 +76,6 @@ export class ProfilePage implements OnInit {
     this.http.post(environment.uploadImage, imageFile).subscribe((res) => {
       if (res) {
         if (res["status"] == "200") {
-          console.log(res);
           const url = res["url"];
           this.updateProfilePicture(this.profileId, url).subscribe((res) => {
             if (res) {
@@ -101,32 +95,7 @@ export class ProfilePage implements OnInit {
         return;
       }
     });
-
-    // console.log("new profile photo", this.profilePicture);
-    // this.image.nativeElement.src = this.imageUrl;
-    // this.image.nativeElement.src = this.profilePicture;
-    // console.log("IMAGEURL", this.image.nativeElement.src);
   }
-
-  // base64ToBlob(b64Data, contentType = "", sliceSize = 512) {
-  //   const byteCharacters = atob(b64Data);
-  //   const byteArrays = [];
-
-  //   for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-  //     const slice = byteCharacters.slice(offset, offset + sliceSize);
-
-  //     const byteNumbers = new Array(slice.length);
-  //     for (let i = 0; i < slice.length; i++) {
-  //       byteNumbers[i] = slice.charCodeAt(i);
-  //     }
-
-  //     const byteArray = new Uint8Array(byteNumbers);
-  //     byteArrays.push(byteArray);
-  //   }
-
-  //   const blob = new Blob(byteArrays, { type: contentType });
-  //   return blob;
-  // }
 
   b64toBlob(dataURI) {
     var byteString = atob(dataURI.split(",")[1]);
@@ -137,17 +106,6 @@ export class ProfilePage implements OnInit {
       ia[i] = byteString.charCodeAt(i);
     }
     return new Blob([ab], { type: "image/jpeg" });
-  }
-
-  makeRandomName(length: number) {
-    var result = "";
-    var characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
   }
 
   updateProfilePicture(profileId: string, pictureUrl: string) {
