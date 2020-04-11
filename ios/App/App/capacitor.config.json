@@ -19,5 +19,9 @@
       "splashFullScreen": true,
       "splashImmersive": true
     }
+  },
+  "server": {
+    "url": "http://172.20.10.4:8101",
+    "cleartext": true
   }
 }

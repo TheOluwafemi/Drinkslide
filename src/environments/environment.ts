@@ -8,6 +8,7 @@ export const environment = {
   loginUser: `${baseUrl}/authenticate/`,
   registerUser: `${baseUrl}/profile/`,
   getFeed: `${baseUrl}/feed/`,
+  uploadImage: `https://uploader-0012.appspot.com/uploads`,
 };
 
 /*

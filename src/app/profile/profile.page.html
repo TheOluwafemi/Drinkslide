@@ -5,7 +5,7 @@
 
   <div class="profile">
     <div class="profile-image">
-      <ion-img class="photo" [src]="profilePicture"></ion-img>
+      <img #image class="photo" [src]="profilePicture" />
     </div>
 
     <div class="profile-details ion-text-center">
@@ -15,10 +15,10 @@
       </ion-text>
 
       <ion-text color="light">
-        <p>{{ email }}</p>
+        <h3>{{ username }}</h3>
       </ion-text>
       <ion-text color="light">
-        <p>@{{ username }}</p>
+        <small>{{ email }}</small>
       </ion-text>
     </div>
   </div>
