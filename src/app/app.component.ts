@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
-import { Platform } from "@ionic/angular";
+import { Platform, MenuController } from "@ionic/angular";
 import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { AuthenticationService } from "./Auth/authentication.service";
@@ -24,7 +24,8 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private authService: AuthenticationService,
     private router: Router,
-    private homeService: HomeService
+    private homeService: HomeService,
+    private menuController: MenuController
   ) {
     this.initializeApp();
   }
@@ -56,6 +57,12 @@ export class AppComponent implements OnInit {
         this.username = res["name"];
       }
     });
+  }
+
+  gotoPage(path: string) {
+    console.log(path);
+    this.router.navigateByUrl(`${path}`);
+    this.menuController.close();
   }
 
   onLogout() {
