@@ -10,7 +10,7 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { RequestInterceptor } from "./utils/request.interceptor";
@@ -24,6 +24,7 @@ import { RequestInterceptor } from "./utils/request.interceptor";
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     IonicStorageModule.forRoot(),
   ],
   providers: [

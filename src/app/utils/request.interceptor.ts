@@ -34,11 +34,11 @@ export class RequestInterceptor implements HttpInterceptor {
       tap(
         (event) => {
           if (event instanceof HttpResponse) {
-            this.stopLoading();
+            // this.stopLoading();
           }
         },
         (error) => {
-          this.stopLoading();
+          // this.stopLoading();
         }
       )
     );

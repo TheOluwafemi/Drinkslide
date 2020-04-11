@@ -52,7 +52,6 @@ export class AppComponent implements OnInit {
   getProfile() {
     this.homeService.profileDetails.subscribe((res) => {
       if (res) {
-        console.log(res, "res");
         this.profilePicture = res["profile_picture"];
         this.username = res["name"];
       }
@@ -60,7 +59,6 @@ export class AppComponent implements OnInit {
   }
 
   gotoPage(path: string) {
-    console.log(path);
     this.router.navigateByUrl(`${path}`);
     this.menuController.close();
   }

@@ -56,7 +56,9 @@ export class AuthenticationService implements OnDestroy {
   }
 
   setToken(token: string) {
-    this.storage.set("token", `Token ${token}`);
+    this.storage.set("token", `Token ${token}`).then(() => {
+      console.log("logged");
+    });
   }
 
   setUserId(id: string) {

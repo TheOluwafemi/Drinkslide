@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { AuthenticationService } from "../Auth/authentication.service";
 import { Router } from "@angular/router";
 import { Storage } from "@ionic/storage";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AlertController, MenuController } from "@ionic/angular";
 
 @Component({
@@ -12,6 +13,7 @@ import { AlertController, MenuController } from "@ionic/angular";
 export class LoginPage implements OnInit {
   email: string = "";
   password: string = "";
+  loginForm: FormGroup;
 
   constructor(
     private authService: AuthenticationService,
@@ -22,6 +24,14 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.authService.checkToken();
+
+    this.loginForm = new FormGroup({
+      email: new FormControl("", [Validators.email, Validators.required]),
+      password: new FormControl("", [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
+    });
   }
 
   ionViewWillEnter() {
@@ -29,12 +39,13 @@ export class LoginPage implements OnInit {
   }
 
   onLogin() {
-    const username = this.email;
-    const password = this.password;
+    const username = this.loginForm.controls.email.value;
+    const password = this.loginForm.controls.password.value;
 
     this.authService.login(username, password);
     this.authService.loginState.subscribe((res) => {
       if (res) {
+        this.authService.setToken(res["token"]);
         this.router.navigateByUrl("/tabs/home");
       }
     });
