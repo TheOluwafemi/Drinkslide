@@ -26,6 +26,10 @@ ion-content {
     ion-list {
       min-width: 100%;
     }
+
+    .text-danger {
+      color: red;
+    }
   }
   ion-row {
     margin: 2rem 0;
