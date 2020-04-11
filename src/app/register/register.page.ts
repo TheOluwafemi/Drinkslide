@@ -1,12 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { CreateProfileService } from "../Auth/create-profile.service";
 import { Router } from "@angular/router";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+
 import {
   AlertController,
   ToastController,
   MenuController,
 } from "@ionic/angular";
-import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 
 @Component({
   selector: "app-register",
@@ -17,6 +18,7 @@ export class RegisterPage implements OnInit {
   email: string;
   username: string;
   password: string;
+  registerForm: FormGroup;
 
   constructor(
     private createProfileService: CreateProfileService,
@@ -26,18 +28,27 @@ export class RegisterPage implements OnInit {
     private menuController: MenuController
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.registerForm = new FormGroup({
+      email: new FormControl("", [Validators.email, Validators.required]),
+      name: new FormControl("", [Validators.required, Validators.minLength(2)]),
+      password: new FormControl("", [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
+    });
+  }
 
   ionViewWillEnter() {
     this.menuController.enable(false);
   }
 
   async onRegister() {
-    this.createProfileService.register(
-      this.email,
-      this.username,
-      this.password
-    );
+    const username = this.registerForm.controls.name.value;
+    const password = this.registerForm.controls.password.value;
+    const email = this.registerForm.controls.email.value;
+
+    this.createProfileService.register(email, username, password);
     this.createProfileService.registerState.subscribe((res) => {
       if (res) {
         this.presentToast();

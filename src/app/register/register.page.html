@@ -18,59 +18,76 @@
         </div>
       </ion-row>
 
-      <ion-row class="row">
-        <ion-list lines="full" class="ion-no-margin ion-no-padding">
-          <ion-item>
-            <ion-label position="floating">Email</ion-label>
-            <ion-input
-              [(ngModel)]="email"
-              type="email"
-              name="email"
-              inputmode="email"
-              required="true"
-              clearInput="true"
-            ></ion-input>
-          </ion-item>
+      <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <ion-row class="row">
+          <ion-list lines="full" class="ion-no-margin ion-no-padding">
+            <ion-item>
+              <ion-label position="floating">Email</ion-label>
+              <ion-input
+                formControlName="email"
+                type="email"
+                name="email"
+                inputmode="email"
+                required="true"
+                clearInput="true"
+              ></ion-input>
+            </ion-item>
+            <small
+              *ngIf="!registerForm.controls.email.valid  && registerForm.controls.email.touched"
+              class="text-danger"
+              >Enter a valid email <sup>*</sup>
+            </small>
 
-          <ion-item>
-            <ion-label position="floating">Username</ion-label>
-            <ion-input
-              [(ngModel)]="username"
-              type="text"
-              name="username"
-              inputmode="text"
-              required="true"
-            ></ion-input>
-          </ion-item>
+            <ion-item>
+              <ion-label position="floating">Username</ion-label>
+              <ion-input
+                formControlName="name"
+                type="text"
+                name="username"
+                inputmode="text"
+                required="true"
+              ></ion-input>
+            </ion-item>
+            <small
+              *ngIf="!registerForm.controls.name.valid  && registerForm.controls.name.touched"
+              class="text-danger"
+              >User name must be more than one character <sup>*</sup>
+            </small>
 
-          <ion-item>
-            <ion-label position="floating">Confirm Password</ion-label>
-            <ion-input
-              [(ngModel)]="password"
-              type="password"
-              name="password"
-              inputmode="password"
-              required="true"
-              clearInput="true"
-            ></ion-input>
-          </ion-item>
-        </ion-list>
-      </ion-row>
+            <ion-item>
+              <ion-label position="floating">Confirm Password</ion-label>
+              <ion-input
+                formControlName="password"
+                type="password"
+                name="password"
+                inputmode="password"
+                required="true"
+                clearInput="true"
+              ></ion-input>
+            </ion-item>
+            <small
+              *ngIf="!registerForm.controls.password.valid  && registerForm.controls.password.touched"
+              class="text-danger"
+              >Password must be more than 6 characters <sup>*</sup>
+            </small>
+          </ion-list>
+        </ion-row>
 
-      <ion-row class="ion-margin-top ion-margin-bottom">
-        <div class="btn-wrapper ion-padding">
-          <ion-button
-            (click)="onRegister()"
-            expand="full"
-            type="submit"
-            class="ion-no-margin"
-            >Create account</ion-button
-          >
-          <small
-            >Already have an account? <a routerLink="/login">Login</a></small
-          >
-        </div>
-      </ion-row>
+        <ion-row class="ion-margin-top ion-margin-bottom">
+          <div class="btn-wrapper ion-padding">
+            <ion-button
+              [disabled]="!registerForm.valid"
+              expand="full"
+              type="submit"
+              class="ion-no-margin"
+              >Create account</ion-button
+            >
+            <small
+              >Already have an account? <a routerLink="/login">Login</a></small
+            >
+          </div>
+        </ion-row>
+      </form>
     </ion-grid>
   </div>
 </ion-content>

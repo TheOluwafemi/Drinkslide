@@ -23,6 +23,10 @@ ion-content {
     justify-content: space-between;
     align-items: center;
 
+    .text-danger {
+      color: red;
+    }
+
     ion-list {
       min-width: 100%;
     }
